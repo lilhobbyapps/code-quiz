@@ -1,0 +1,64 @@
+:root {
+    --black:#1C1B1B;
+    --gray:#F6F6F6;
+    --peach:#FFEADD;
+    --lightPink:#FCAEAE;
+    --pink:#FF8989;
+    --red:#FF6666;
+}
+
+* {
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--peach);
+}
+
+h1 {
+    color: var(--red);
+    font-size: 48px;
+    text-align: center;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: var(black);
+    text-align: center;
+    margin: 20px 40px;
+}
+
+#buttonStartQuiz {
+    margin-top: 60px;
+}
+.button {
+    background-color: var(--red);
+    color: white;
+    border: var(--red) solid 2px;
+    padding: 16px 28px;
+}
+
+.button:hover {
+    background-color: var(--black);
+    color: white;
+    border: var(--black) solid 2px;
+    padding: 16px 28px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#viewHighScore p, #TimerText p {
+    color: var(--red);
+    font-size: 18px;
+}
+
+#viewHighScore p:hover {
+    color:var(--pink);
+}
