@@ -35,11 +35,12 @@ p {
 #buttonStartQuiz {
     margin-top: 60px;
 }
-.button {
+.button, .answers {
     background-color: var(--red);
     color: white;
     border: var(--red) solid 2px;
     padding: 16px 28px;
+    text-align: center;
 }
 
 .button:hover {
@@ -48,6 +49,13 @@ p {
     border: var(--black) solid 2px;
     padding: 16px 28px;
 }
+
+.buttonP {
+    margin-top: 20px;
+    padding: 16px 28px;
+}
+
+
 
 header {
     display: flex;
