@@ -1,14 +1,14 @@
 var h1 = document.querySelector("h1");
 var mainText = document.querySelector("#mainText");
 var timerText = document.getElementById("timerText");
-var timer = 60;
+var timer = 100;
 
   // Start Quiz
 var startQuizButton = document.querySelector("#buttonStartQuiz");
 startQuizButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
-    timer = 60;
+    timer = 100;
     timerText.innerText = timer;
     startTimer;
 }
