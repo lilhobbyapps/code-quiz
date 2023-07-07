@@ -62,7 +62,7 @@ header {
     justify-content: space-between;
 }
 
-#viewHighScore p, #TimerText p {
+#viewHighScore p>a, #TimerText p {
     color: var(--red);
     font-size: 18px;
 }
