@@ -16,7 +16,7 @@
 
 body {
     margin: 0px;
-    background-color: var(--peach);
+    background-color: var(--gray);
 }
 
 h1 {
@@ -67,6 +67,66 @@ header {
     font-size: 18px;
 }
 
-#viewHighScore p:hover {
+#viewHighScore p>a:hover {
     color:var(--pink);
+}
+
+ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+li {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin: 8px 28%;
+    background-color: var(--lightPink);
+    font-size:18px;
+    padding: 10px;
+    align-items: center;
+}
+
+#buttonClearScores {
+    margin-top: 60px;
+}
+
+form {
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   margin-top: 60px;
+   font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+input {
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+label {
+    text-align: center;
+    color:var(--red);
+   
+
+}
+
+input {
+    margin-left: 22px;
+}
+
+#submitButton {
+    background-color: var(--red);
+    border: none;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    padding: 10px 20px;
+}
+
+#submitButton:hover {
+    background-color: var(--black);
+}
+
+#addHighScore {
+    text-align: center;
 }
