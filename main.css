@@ -1,0 +1,120 @@
+:root {
+    --black:#1C1B1B;
+    --gray:#F6F6F6;
+    --peach:#FFEADD;
+    --lightPink:#FCAEAE;
+    --pink:#FF8989;
+    --red:#FF6666;
+}
+
+* {
+    /* list-style: none; */
+    text-decoration: none;
+    /* font-family: 'Lilita One', cursive; */
+    font-size: 24px;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--gray);
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+p {
+    color:var(--black);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 1.5%;
+}
+
+h1, h3, h4 {
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    font-size: 48px;
+    color: var(--red);
+}
+
+h2 {
+    margin: auto;
+    width: 35%;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
+#viewHighScores {
+    font-family: 'Lilita One', cursive;
+    color: var(--red);
+    font-size: 18px;
+}
+
+#viewHighScores:hover {
+    color: var(--pink);
+}
+
+#timer {
+    color: var(--red); 
+    font-size: 18px;
+}
+
+#time {
+    font-family: 'Lilita One', cursive; 
+}
+
+#intro {
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.startQuiz, #submitButton {
+    background-color: var(--red);
+    color: white;
+    font-family: 'Lilita One', cursive;
+    padding: 16px 10px;
+    margin: auto;
+    margin-top:60px;
+    text-align: center;
+    border: none;
+    width: 200px;
+}
+
+.startQuiz:hover, .buttonQ:hover, #goBack:hover, #clearHighScores:hover {
+    background-color: var(--pink);
+}
+
+.buttonQ {
+    background-color: var(--red);
+    color: white;
+    font-family: 'Lilita One', cursive;
+    padding: 16px 10px;
+    margin-left: 36%;
+    margin-right: 36%;
+    margin-top: 24px;
+    border: none;
+}
+#highScoreListButtons {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+#goBack, #clearHighScores {
+    background-color: var(--red);
+    color: white;
+    font-family: 'Lilita One', cursive;
+    padding: 16px 16px;
+}
+
+#goBack {
+    margin-right: 12px;
+}
+
+#clearHighScores {
+    margin-left: 12px;
+}
+
+
+
