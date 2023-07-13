@@ -9,46 +9,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/x-icon" href="files/favicon.png">
 </head>
 <body>
-    <header>
-        <section id="viewHighScore">
-            <p><a href="#" id="highScores">View High Scores</a></p>
-        </section>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#"><p id="viewHighScores">View High Scores</p></a>
+        <p id="timer">Time:&nbsp;<span id="time">0</span></p>
+    </nav>
 
-        <section id="TimerText">
-            <p>Time: <span id="timerText">0</span></p>
-        </section>
-    </header>
-    <section>
-        <h1>Coding Quiz Challenge</h1>
-        <ol id="highScoreList">
-            <li>1. Mario - 22</li>
-            <li>2. Luigi - 21</li>
-            <li>3.</li>
-            <li>4.</li>
-            <li>5.</li>
-        </ol>
 
-        <p id="mainText">Try to answer the following code-related questions within the time limit. <br> Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <p id="buttonStartQuiz"><a href="#" class="button">Start Quiz</a></p>
-        <p id="buttonClearScores"><a href="#" class="button">Clear High Scores</a></p>
-    <form id="addHighScore">
-        <label for="fname">Enter Initials: </label>
-        <input type="text" id="input_id" name="fname">
-        <input id="submitButton" type="submit" value="Submit">
-    </form>
-
+    <!-- WELCOME PAGE -->
+    <section id="welcomePage">
+        <h1>Code Quiz Challenge</h1>
+        <p id="intro">Try to answer the following code-related questions within the time limit.
+<br>Keep in mind that incorrect answers will penalize your score/time
+by ten seconds!</p>
+<a href="#"><p class="startQuiz">Start Quiz</p></a>
     </section>
 
 
+    <!-- QUESTION PAGE -->
+    <section id="questionPage">
+        <h2 id="question">Question</h2>
+        <a href="#"><p class="buttonQ button1">1.</p></a>
+        <a href="#"><p class="buttonQ button2">2.</p></a>
+        <a href="#"><p class="buttonQ button3">3.</p></a>
+        <a href="#"><p class="buttonQ button4">4.</P></a>
+        <p id="correctOrWrong"></p>
+    </section>
 
 
+    <!-- SCORE PAGE -->
+    <section id="ScorePage">
+        <h3>All done!</h3>
+        <p id="finalScoreIs"></p>
+        <section id="addHighScore">
+            <label>Enter Initials: </label>
+            <input type="text" id="input_id" minlength="2" maxlength="4">
+            <a href="#"><p id="submitButton">Submit</p></a>
+        </section>
+    </section>
 
 
-
-<script src="script.js"></script>
+    <!-- HIGH SCORE PAGE -->
+    <section id="highScorePage">
+        <h4>High Scores</h4>
+        <ol id="highScoresList">
+        </ol>
+        <section id="highScoreListButtons">
+        <a href="#"><span id="goBack">Go Back</span></a>
+        <a href="#"><span id="clearHighScores">Clear High Scores</span></a>
+        </section>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>

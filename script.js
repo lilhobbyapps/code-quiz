@@ -1,96 +1,129 @@
-var h1 = document.querySelector("h1");
-var mainText = document.querySelector("#mainText");
-var timerText = document.getElementById("timerText");
-var welcome = "Try to answer the following code-related questions within the time limit. <br> Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
-var addHighScore = document.querySelector("#addHighScore");
+var welcomePage = document.querySelector("#welcomePage");
+var questionPage = document.querySelector("#questionPage");
+var scorePage = document.querySelector("#scorePage");
+var highScorePage = document.querySelector("#highScorePage");
+var startQuizButton = document.querySelector(".startQuiz");
+var button1 = document.querySelector(".button1");
+var button2 = document.querySelector(".button2");
+var button3 = document.querySelector(".button3");
+var button4 = document.querySelector(".button4");
+var goBackButton = document.querySelector("#goBack");
+var viewHighScoresButton = document.querySelector("#viewHighScores");
+var highScoresList = document.getElementById("highScoresList");
+var highScoreListItems = highScoresList.childNodes;
+var submitInitials = document.getElementById("submitButton");
+var clearHighScoresButton = document.querySelector("#clearHighScores");
+var startedQuiz = false;
 var score = 0;
-var finalScore = score;
-var right = 0;
-var wrong = 0;
 
-var counter = 10;
-  // Start Quiz
-var startQuizButton = document.querySelector("#buttonStartQuiz");
 startQuizButton.addEventListener("click", startQuiz);
-addHighScore.style.display = "none";
+viewHighScoresButton.addEventListener("click", viewHighScores);
+goBackButton.addEventListener("click", goBack);
+submitInitials.addEventListener("click", addInitials);
+clearHighScoresButton.addEventListener("click", clearHighScores);
+
+questionPage.style.display = "none";
+scorePage.style.display = "none";
+highScorePage.style.display = "none";
 
 
-function startQuiz() {
-    counter = 10;
-    startQuizButton.style.display = "none";
-    highScoreList.style.display = "none";
+// STARTS THE QUIZ - TIMER STARTS AND QUESTIONS APPEAR
+function startQuiz(){
+    timer();
+    startedQuiz = true;
+    questionPage.style.display = "block";
+    welcomePage.style.display = "none";
+    scorePage.style.display = "none";
+    highScorePage.style.display = "none";
+}
+
+// VIEW THE HIGH SCORE LIST
+function viewHighScores(){
+    questionPage.style.display = "none";
+    welcomePage.style.display = "none";
+    scorePage.style.display = "none";
+    highScorePage.style.display = "block";
+}
+
+
+// GO BACK AND RETURN TO PREVIOUS PAGE
+function goBack(){
+
+    if(startedQuiz == true) {
+        questionPage.style.display = "block";
+        welcomePage.style.display = "none";
+    } else {
+        questionPage.style.display = "none";
+        welcomePage.style.display = "block";
+    }
+    scorePage.style.display = "none";
+    highScorePage.style.display = "none";
+}
+
+// CLEAR SCORES FROM THE HIGH SCORE LIST
+function clearHighScores(){
+    var highScoreListItems = highScoresList.childNodes;
+    var i = 0;
+    while (i < highScoreListItems.length){
+        highScoreListItems[i].innerHTML = "";
+        i+=1;
+    }
+}
+
+
+// START TIMER AN DISPLAY QUESTIONS PAGE
+function timer() {
+    //75 seconds
+    var counter = 10;
+
     
     var timerCountdown = setInterval(function(){
       if (counter >= 0) {
-        timerText.innerHTML = counter;
+        document.querySelector("#time").innerHTML = counter;
         counter -= 1;
       } else {
         clearInterval(timerCountdown);
-        h1.innerText = "All Done!";
-        mainText.innerText = "Your final score is " + finalScore + ".";
-        addHighScore.style.display = "block";
+        questionPage.style.display = "none";
+        welcomePage.style.display = "none";
+        scorePage.style.display = "block";
+        highScorePage.style.display = "none";
+        startedQuiz = false;
+        score = counter + 1;
+        var finalScoreText = "Your final score is " + score + ".";
+        var finalScoreIs = document.querySelector("#finalScoreIs");
+        finalScoreIs.innerText = finalScoreText;
+
       }
     }, 1000);
 }
 
+// ADD NEW INITIALS AND SCORE TO HIGH SCORE LIST
+function addInitials() {
+    var initial = document.getElementById("input_id").value;
+    var newScore = score;
+    var text = initial + " - " + newScore;
+    
+    var textNode = document.createTextNode(text);
+    var node = document.createElement("li");
 
-  // View High Score
-var highScoreButton = document.querySelector("#highScores");
-highScoreButton.addEventListener("click", viewScores);
-var open = true;
+    node.appendChild(textNode);
 
-  // Start Quiz
-var clearHighScores = document.querySelector("#buttonClearScores");
-var highScoreList = document.querySelector("#highScoreList");
-clearHighScores.style.display = "none";
-clearHighScores.addEventListener("click", clearScores);
-highScoreList.style.display = "none";
+    highScoresList.appendChild(node);
 
-function viewScores(){
-    if(open == true) {
-      open = false;
-      addHighScore.style.display = "nopne";
-      highScoreButton.innerText = "Go Back";
-      h1.innerText = "High Scores";
-      mainText.style.display = "none";
-      startQuizButton.style.display = "none";
-      clearHighScores.style.display = "block";
-      highScoreList.style.display = "block";
-    } else {
-      open = true;
-      highScoreButton.innerText = "View High Scores";
-      h1.innerText = "Coding Quiz Challenge";
-      mainText.style.display = "block";
-      startQuizButton.style.display = "block";
-      clearHighScores.style.display = "none";
-      highScoreList.style.display = "none";
-    }
+    startedQuiz = false;
+    questionPage.style.display = "none";
+    welcomePage.style.display = "block";
+    scorePage.style.display = "none";
+    highScorePage.style.display = "none";
 }
 
-var ol = document.querySelectorAll("ol li");
+// var questions = {
+//     "String values must be enclosed within _________ when being assigned to variables.":["commas", "curly brackets", "quotes", "parenthesis", 1],
+//     "Most lines of Javascript code must end with what character?":[".", ":",";",",",2],
+//     "A very useful tool used during development and debugging for printing content to the debugger is":[Javascript
+//         Terminal/bash
+//         For Loops
+//         Console.log
+//         ]
 
-function clearScores(){
-  var i = 0;
-  while(i<4) {
-    ol[i].innerText = (i+1) + ". ";
-    i+=1;
-  }
-}
-
-
-// Add High Score
-
-// var initial = document.getElementById("input_id").value;
-
-
-
-
-// QUESTIONS/OPTIONS/ANSWER
-var questions = {
-    "String values must be enclosed within _________ when being assigned to variables.":["commas", "curly brackets", "quotes", "parenthesis", 1],
-    "Most lines of Javascript code must end with what character?":[".", ":",";",",",2],
-
-}
-/*
-High Scores
-*/
+// }
