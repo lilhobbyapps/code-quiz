@@ -16,6 +16,12 @@ var clearHighScoresButton = document.querySelector("#clearHighScores");
 var startedQuiz = false;
 var score = 0;
 
+var question = document.getElementById("question");
+var button1 = document.querySelector(".button1");
+var button2 = document.querySelector(".button2");
+var button3 = document.querySelector(".button3");
+var button4 = document.querySelector(".button4");
+
 startQuizButton.addEventListener("click", startQuiz);
 viewHighScoresButton.addEventListener("click", viewHighScores);
 goBackButton.addEventListener("click", goBack);
@@ -30,6 +36,7 @@ highScorePage.style.display = "none";
 // STARTS THE QUIZ - TIMER STARTS AND QUESTIONS APPEAR
 function startQuiz(){
     timer();
+    populateQuestions();
     startedQuiz = true;
     questionPage.style.display = "block";
     welcomePage.style.display = "none";
@@ -70,13 +77,11 @@ function clearHighScores(){
     }
 }
 
-
+var counter = 75;
 // START TIMER AN DISPLAY QUESTIONS PAGE
 function timer() {
     //75 seconds
-    var counter = 10;
 
-    
     var timerCountdown = setInterval(function(){
       if (counter >= 0) {
         document.querySelector("#time").innerHTML = counter;
@@ -102,14 +107,10 @@ function addInitials() {
     var initial = document.getElementById("input_id").value;
     var newScore = score;
     var text = initial + " - " + newScore;
-    
     var textNode = document.createTextNode(text);
     var node = document.createElement("li");
-
     node.appendChild(textNode);
-
     highScoresList.appendChild(node);
-
     startedQuiz = false;
     questionPage.style.display = "none";
     welcomePage.style.display = "block";
@@ -117,13 +118,103 @@ function addInitials() {
     highScorePage.style.display = "none";
 }
 
-// var questions = {
-//     "String values must be enclosed within _________ when being assigned to variables.":["commas", "curly brackets", "quotes", "parenthesis", 1],
-//     "Most lines of Javascript code must end with what character?":[".", ":",";",",",2],
-//     "A very useful tool used during development and debugging for printing content to the debugger is":[Javascript
-//         Terminal/bash
-//         For Loops
-//         Console.log
-//         ]
 
-// }
+// QUESTIONS ANSWERS & CORRECT ANSWERS
+var questions = [
+    "String values must be enclosed within _________ when being assigned to variables.",
+    "Most lines of Javascript code must end with what character?",
+    "A very useful tool used during development and debugging for printing content to the debugger is",
+];
+
+// CORRECT ANSWERS ARE EQUAL TO LAST ITEM IN ARRAY. 
+// LAST ITEM ARRAY IS THE NUMBER IN THE ARRAY WHICH IS CORRECT
+var answers = [
+    ["commas", "curly brackets", "quotes", "parenthesis", 1],
+    [".",";", ":",",", 1],
+    ["Javascript", "Terminal/bash", "For Loops", "Console.log", 2],
+];
+
+var correctAnswers = ["quotes", ";", "Console.log"];
+var i = 0;
+function populateQuestions(i){
+        question.innerHTML = questions[this.i];
+        button1.innerHTML = answers[this.i][0];
+        button2.innerHTML = answers[this.i][1];
+        button3.innerHTML = answers[this.i][2];
+        button4.innerHTML = answers[this.i][3];
+
+}
+
+button1.addEventListener("click", correctOrNo1);
+button2.addEventListener("click", correctOrNo2);
+button3.addEventListener("click", correctOrNo3);
+button4.addEventListener("click", correctOrNo4);
+correct = false;
+
+function correctOrNo1() {
+    while(i<5) {
+        if (answers[0][0] == correctAnswers[0]) {
+            alert("true!");
+            correct = true;
+            populateQuestions(i+=1);
+        } else {
+            alert("false.");
+            counter -= 10;
+            correct = false;
+            populateQuestions(i+1);
+        }
+        i+=1;
+    }
+
+}
+
+function correctOrNo2() {
+    while(i<5) {
+        if (answers[0][1] == correctAnswers[0]) {
+            alert("true!");
+            correct = true;
+            populateQuestions(i+1);
+        } else {
+            alert("false.");
+            counter -= 10;
+            correct = false;
+            populateQuestions(i+1);
+        }
+        i+=1;
+    }
+
+}
+
+function correctOrNo3() {
+    while(i<5) {
+        if (answers[0][2] == correctAnswers[0]) {
+            alert("true!");
+            correct = true;
+            populateQuestions(i+1);
+        } else {
+            alert("false.");
+            counter -= 10;
+            correct = false;
+            populateQuestions(i+1);
+        }
+        i+=1;
+    }
+
+}
+
+function correctOrNo4() {
+    while(i<5) {
+        if (answers[0][3] == correctAnswers[0]) {
+            alert("true!");
+            correct = true;
+            populateQuestions(i+1);
+        } else {
+            alert("false.");
+            counter -= 10;
+            correct = false;
+            populateQuestions(i+1);
+        }
+        i+=1;
+    }
+
+}
